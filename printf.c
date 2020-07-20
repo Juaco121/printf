@@ -1,47 +1,46 @@
+#include "holberton.h"
 #include <unistd.h>
 #include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "holberton.h"
 
 /**
- *_printf - prints a string with specifiers
- *@format: the main string passed to the function
- *
- *Return: number of total characters printed to stdout
- */
+*_printf - print char at printf
+*@format: the main string passed to the function
+*Return: Integer
+*/
+
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int counter = 0;
-	char *buffer;
-	int *bi;
-	int i = 0;
-	specifiers spec[] = {
-		{"c", printchar},
-		{"s", printstr},
-		{"d", printint},
-		{"i", printint},
-		{"b", printbin},
-		{"u", printuint},
-		{"o", printoctal},
-		{"x", printhex},
-		{"X", printhexcaps},
-		{NULL, NULL}
-	};
+		va_list Lista_Of_argument;
+		int Bits = 0;
 
-	bi = &i;
-	if (format == NULL)
-		return (-1);
-	buffer = malloc(1024);
-	if (buffer == NULL)
-		return (-1);
-	va_start(args, format);
-	if (args == NULL)
-		return (-1);
-	counter = formats(format, spec, args, buffer, bi);
-	write(1, buffer, *bi);
-	free(buffer);
-	va_end(args);
-	return (counter);
+		va_start(Lista_Of_argument, format);
+		while (format && *format)
+		{
+		if (*format == '%')
+		{
+			format++;
+			switch (*format)
+			{
+			case 'c':
+				Bits += print_Character(Lista_Of_argument);
+				format++;
+				break;
+			case 's':
+				Bits += print_str(Lista_Of_argument);
+				format++;
+				break;
+			case '%':
+				print_percent(Lista_Of_argument);
+				format++;
+				break;
+			}
+		}
+		else
+		{
+			write(1, &(*format++), 1);
+			Bits++;
+		}
+		}
+		va_end(Lista_Of_argument);
+	return (0);
 }
