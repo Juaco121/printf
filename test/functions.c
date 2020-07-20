@@ -44,17 +44,21 @@ int print_str(va_list lista)
 {
       unsigned int count = 0;
       
-      char *str = va_arg(lista, int);
-      write(1,&str,1);
+      
+      char *str = va_arg(lista, char *);
       /*_putchar((char)*str);*/
-      return (1);
-
       if (!str)
-            str = "(nil)";
-
-      while (str)
       {
-            write(1,&str,1);
+            char *s = "(null)";
+            str = s;
+            while(*s)
+            write(1,&(*s++),1);
+            return(6);
+      }
+
+      while (*str)
+      {
+            write(1,&(*str++),1);
             /*_putchar((char)*str);*/
             count++;
       }
