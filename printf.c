@@ -1,6 +1,5 @@
 #include "holberton.h"
-#include <unistd.h>
-#include <stdarg.h>
+
 /**
 *_printf - print char at printf
 *@format: the main string passed to the function
@@ -17,25 +16,18 @@ int _printf(const char *format, ...)
 			if (*format == '%')
 			{
 				format++;
-				switch (*format)
+				while (*format)
 				{
-				case 'c':
-					format++;
-					Bits += print_char(Lista_Of_argument);
-					break;
-				case 's':
-					format++;
-					Bits += print_str(Lista_Of_argument);
-					break;
-				case '%':
-					format++;
-					Bits += print_percent(Lista_Of_argument);
-					break;
-				case 'd':
-				case 'i':
-					format++;
-					Bits += print_int(Lista_Of_argument);
-					break;
+				if (*format == 'c')
+					format++, Bits += print_char(Lista_Of_argument);
+				if (*format == 'c')
+					format++, Bits += print_str(Lista_Of_argument);
+				if (*format == '%')
+					format++, Bits += print_percent(Lista_Of_argument);
+				if (*format == 'i' || *format == 'd')
+					format++, Bits += print_int(Lista_Of_argument);
+				else
+				break;
 				}
 			}
 			else
