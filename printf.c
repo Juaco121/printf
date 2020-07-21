@@ -36,8 +36,6 @@ int _printf(const char *format, ...)
 					format++;
 					Bits += print_int(Lista_Of_argument);
 					break;
-					default:
-					continue;
 				}
 			}
 			else
@@ -46,6 +44,8 @@ int _printf(const char *format, ...)
 				Bits++;
 			}
 		}
+		if (format == NULL)
+		return (-1);
 		va_end(Lista_Of_argument);
 	return (Bits);
 }
