@@ -36,6 +36,8 @@ int _printf(const char *format, ...)
 					format++;
 					Bits += print_int(Lista_Of_argument);
 					break;
+					default:
+					continue;
 				}
 			}
 			else
