@@ -31,8 +31,8 @@ int _printf(const char *format, ...)
 				Bits += print_str(Lista_Of_argument);
 				break;
 			case '%':
-				print_percent(Lista_Of_argument);
 				format++;
+				Bits += print_percent(Lista_Of_argument);
 				break;
 			}
 		}
@@ -43,5 +43,5 @@ int _printf(const char *format, ...)
 		}
 		}
 		va_end(Lista_Of_argument);
-	return (0);
+	return (Bits);
 }
