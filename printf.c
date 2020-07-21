@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 
+
 /**
 *_printf - print char at printf
 *@format: the main string passed to the function
@@ -22,12 +23,12 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 			case 'c':
-				Bits += print_char(Lista_Of_argument);
 				format++;
+				Bits += print_char(Lista_Of_argument);
 				break;
 			case 's':
-				Bits += print_str(Lista_Of_argument);
 				format++;
+				Bits += print_str(Lista_Of_argument);
 				break;
 			case '%':
 				print_percent(Lista_Of_argument);

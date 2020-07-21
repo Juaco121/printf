@@ -23,7 +23,7 @@ int print_char(va_list lista)
 */
 int print_percent(__attribute__((unused))va_list lista)
 {
-	write(1, "%", 1);
+	write(1, "%%", 1);
 	return (1);
 }
 
