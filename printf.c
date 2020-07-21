@@ -16,25 +16,20 @@ int _printf(const char *format, ...)
 			if (*format == '%')
 			{
 				format++;
-				switch (*format)
+				if (*format)
 				{
-				case 'c':
-					format++;
-					Bits += print_char(Lista_Of_argument);
-					break;
-				case 's':
-					format++;
-					Bits += print_str(Lista_Of_argument);
-					break;
-				case '%':
-					format++;
-					Bits += print_percent(Lista_Of_argument);
-					break;
-				case 'd':
-				case 'i':
-					format++;
-					Bits += print_int(Lista_Of_argument);
-					break;
+				if (*format == 'c')
+					format++, Bits += print_char(Lista_Of_argument);
+				else if (*format == 's')
+					format++, Bits += print_str(Lista_Of_argument);
+				else if (*format == '%')
+					format++, Bits += print_percent(Lista_Of_argument);
+				else if (*format == 'd')
+					format++, Bits += print_int(Lista_Of_argument);
+				else if (*format == 'i')
+				format++, Bits += print_int(Lista_Of_argument);
+				else
+				return (-1);
 				}
 			}
 			else
@@ -43,6 +38,8 @@ int _printf(const char *format, ...)
 				Bits++;
 			}
 		}
+		if (format == NULL)
+		return (-1);
 		va_end(Lista_Of_argument);
 	return (Bits);
 }
