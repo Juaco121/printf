@@ -58,7 +58,7 @@ int print_str(va_list lista)
 }
 
 /**
-*print_percent - print char at printf
+*print_int - print integers
 *@lista: the main string passed to the function
 *Return: Integer
 */
@@ -70,7 +70,7 @@ int print_int(va_list lista)
 
 	if (n < 0)
 	{
-		write(1, '-', 1);
+		write(1, "-", 1);
 		count++;
 		num = n * -1;
 	}
@@ -82,8 +82,10 @@ int print_int(va_list lista)
 }
 
 /**
-*print_percent - print char at printf
-*@lista: the main string passed to the function
+*putN - puts numbers with recursion as chars
+*@n: the main string passed to the function
+*@b: the main string passed to the function
+*@nums: the main string passed to the function
 *Return: Integer
 */
 int putN(unsigned int n, unsigned int b, char *nums)
@@ -91,8 +93,8 @@ int putN(unsigned int n, unsigned int b, char *nums)
 	int r = 1;
 
 	if (n >= b)
-		r += putN(n / b, b, nums);	
+		r += putN(n / b, b, nums);
 
-	write(1, nums[n % b], 1);
+	write(1, &nums[n % b], 1);
 	return (r);
 }
