@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 			case 'c':
-				Bits += print_Character(Lista_Of_argument);
+				Bits += print_char(Lista_Of_argument);
 				format++;
 				break;
 			case 's':
