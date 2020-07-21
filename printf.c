@@ -9,27 +9,31 @@ int _printf(const char *format, ...)
 {
 		va_list Lista_Of_argument;
 		int Bits = 0;
-
 		va_start(Lista_Of_argument, format);
 		while (format && *format)
 		{
 			if (*format == '%')
 			{
 				format++;
-				while (*format)
+				switch (*format)
 				{
-				if (*format == 'c')
-					format++, Bits += print_char(Lista_Of_argument);
-				else if (*format == 's')
-					format++, Bits += print_str(Lista_Of_argument);
-				else if (*format == '%')
-					format++, Bits += print_percent(Lista_Of_argument);
-				else if (*format == 'd')
-					format++, Bits += print_int(Lista_Of_argument);
-				else if (*format == 'i')
-				format++, Bits += print_int(Lista_Of_argument);
-				else
-				break;
+				case 'c':
+					format++;
+					Bits += print_char(Lista_Of_argument);
+					break;
+				case 's':
+					format++;
+					Bits += print_str(Lista_Of_argument);
+					break;
+				case '%':
+					format++;
+					Bits += print_percent(Lista_Of_argument);
+					break;
+				case 'd':
+				case 'i':
+					format++;
+					Bits += print_int(Lista_Of_argument);
+					break;
 				}
 			}
 			else
@@ -38,8 +42,6 @@ int _printf(const char *format, ...)
 				Bits++;
 			}
 		}
-		if (format == NULL)
-		return (-1);
 		va_end(Lista_Of_argument);
 	return (Bits);
 }
