@@ -28,6 +28,8 @@ int _printf(const char *format, ...)
 					format++, Bits += print_int(Lista_Of_argument);
 				else if (*format == 'i')
 				format++, Bits += print_int(Lista_Of_argument);
+				else if (*format == ' ')
+				return (-1);
 				else
 				return (-1);
 				}
