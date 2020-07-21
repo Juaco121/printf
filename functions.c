@@ -56,3 +56,43 @@ int print_str(va_list lista)
 	}
 	return (count);
 }
+
+/**
+*print_percent - print char at printf
+*@lista: the main string passed to the function
+*Return: Integer
+*/
+int print_int(va_list lista)
+{
+	int n = va_arg(lista, int);
+	int count = 0;
+	unsigned int num;
+
+	if (n < 0)
+	{
+		write(1, '-', 1);
+		count++;
+		num = n * -1;
+	}
+	else
+		num = n;
+
+	count += putN(num, 10, "0123456789");
+	return (count);
+}
+
+/**
+*print_percent - print char at printf
+*@lista: the main string passed to the function
+*Return: Integer
+*/
+int putN(unsigned int n, unsigned int b, char *nums)
+{
+	int r = 1;
+
+	if (n >= b)
+		r += putN(n / b, b, nums);	
+
+	write(1, nums[n % b], 1);
+	return (r);
+}

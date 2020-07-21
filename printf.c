@@ -34,6 +34,14 @@ int _printf(const char *format, ...)
 				format++;
 				Bits += print_percent(Lista_Of_argument);
 				break;
+			case 'd':
+				format++;
+				Bits += print_int(Lista_Of_argument);
+				break;
+			case 'i':
+				format++;
+				Bits += print_int(Lista_Of_argument);
+				break;
 			}
 		}
 		else
