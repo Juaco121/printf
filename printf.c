@@ -16,18 +16,20 @@ int _printf(const char *format, ...)
 			if (*format == '%')
 			{
 				format++;
-				while (*format)
+				if (*format)
 				{
 				if (*format == 'c')
 					format++, Bits += print_char(Lista_Of_argument);
-				if (*format == 'c')
+				if (*format == 's')
 					format++, Bits += print_str(Lista_Of_argument);
 				if (*format == '%')
 					format++, Bits += print_percent(Lista_Of_argument);
-				if (*format == 'i' || *format == 'd')
+				if (*format == 'd')
 					format++, Bits += print_int(Lista_Of_argument);
-				else
-				break;
+				if (*format == 'i')
+					format++, Bits += print_int(Lista_Of_argument);
+				else if (*format == ' ')
+				return (-1);
 				}
 			}
 			else
