@@ -28,10 +28,13 @@ int _printf(const char *format, ...)
 					format++, Bits += print_int(Lista_Of_argument);
 				else if (*format == 'i')
 				format++, Bits += print_int(Lista_Of_argument);
-				else if (*format == ' ')
-				return (-1);
+				else if (*format == ' ' && *format++ == '%')
+				format++, Bits += print_percent(Lista_Of_argument);
 				else
-				return (-1);
+				{
+					Bits += print_percent(Lista_Of_argument);
+					write(1, &(*format++), 1);
+				}
 				}
 			}
 			else
@@ -43,5 +46,5 @@ int _printf(const char *format, ...)
 		if (format == NULL)
 		return (-1);
 		va_end(Lista_Of_argument);
-	return (Bits);
+		return (Bits);
 }
