@@ -1,0 +1,51 @@
+.TH man 3 "21 Julio 2020" "0.00" "_printf man page"
+. SH NAME
+printf - prints the character(s)
+.SH SYNOPSIS
+#include "holberton.h"
+int _printf(const char *format, ...);
+.SH DESCRIPTION
+The printf function creates an output of a character string in
+accordance to a specific format. If the function is successful it will
+return the number of characters printed. The format is a string of
+characters that the function prints. The function goes through each
+character in the string and prints. When a % sign is reached and the
+following character is a special character then a specific conversion
+will occur. The special characters and their conversions are as follows:
+
+.RS 3
+c   prints a character variable
+.br
+s   prints a string variable
+.br
+d   prints an integer and takes an integer value as a signed decimal integer
+.br
+i   prints an integer and takes in a decimal, hexadecimal, or octal type
+.br
+b   prints a binary number
+.br
+u   prints an unsigned integer
+.br
+o   prints an octal number
+.br
+x   prints a hexadecimal number
+.br
+X   prints a hexadecimal number in caps
+.br
+.RE
+
+.SH RETURN
+The function will return the number of characters printed. If unsuccessful the function will return null.
+.SH EXAMPLES
+To print "Today is Thursday" you would do as follow, where day is a pointer to a string:
+
+ #include "holberton.h"
+ _printf("Today is %s", day);
+
+To print "It is 3" you would do as follows, where time is a pointer to a integer:
+
+ #include "holberton.h"
+ _printf("It is %d", time);
+
+.SH AUTHOR
+Marcos Pimienta and Juan Granada
