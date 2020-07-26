@@ -8,6 +8,7 @@ int _printf(const char *format, ...)
 {
 		va_list Lista_Of_argument;
 		int Bits = 0;
+
 		va_start(Lista_Of_argument, format);
 		while (format && *format)
 		{
@@ -31,7 +32,7 @@ int _printf(const char *format, ...)
 				format++, Bits += print_int(Lista_Of_argument);
 				else
 				{
-					write(1, "%%", 1);  
+					write(1, "%%", 1);
 					Bits++;
 				}
 			}
