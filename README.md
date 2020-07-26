@@ -10,16 +10,6 @@
 * this function prints an individual character (similar to standard library putchar)
 ## printf
 * The core function where the buffer is defined and freed. All other functions are called from here
-## printbin
-* This function converts a decimal number to binary
-## printoctal
-* This function converts from a decimal number to octal
-## printhex
-* This function converts decimal numbers to hexadecimal numbers and uses lowercase letters
-## printhexcaps
-* This function also converts decimal numbers to hexadecimal numbers but uses capital letters
-## printbufferoverflow
-* In the case the buffer becomes completely full and the string is not yet fully printed. This function is called and it empties the buffer
 ## formats
 * loops through the specifier struct array (struct defined in holberton.h) and looks to see if the character matches the a character in the specifier array (found in printf function)
 ## printchar
