@@ -30,6 +30,8 @@ int _printf(const char *format, ...)
 					format++, Bits += print_int(Lista_Of_argument);
 				else if (*format == 'i')
 				format++, Bits += print_int(Lista_Of_argument);
+				else if (*format == 'u')
+				format++, Bits += print_unsigned(Lista_Of_argument);
 				else
 				{
 					write(1, "%%", 1);

@@ -80,6 +80,21 @@ int print_int(va_list lista)
 	count += putN(num, 10, "0123456789");
 	return (count);
 }
+/**
+*print_unsigned - print unsigned integers
+*@lista: the main string passed to the function
+*Return: Integer
+*/
+int print_unsigned(va_list lista)
+{
+    unsigned int n = va_arg(lista, unsigned int);
+    int count = 0;
+
+    n = (unsigned int)INT_MAX + 1024;
+
+    count += putN(n, 10, "0123456789");
+    return (count);
+}
 
 /**
 *putN - puts numbers with recursion as chars
